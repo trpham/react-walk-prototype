@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Joyride from 'react-joyride';
-import './react-joyride-compiled.css'
+import './react-joyride-compiled.css';
+import './styles.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 class App extends Component {
@@ -12,9 +13,15 @@ class App extends Component {
     super(props);
 
     this.state = {
-      autoStart: true,
+      autoStart: false,
       running: true,
       steps: [
+        {
+          title: "Click on Tab 1 to start",
+          textAlign: 'center',
+          selector: '.tab1',
+          position: 'top'
+        },
         {
           title: "Click on Box 1",
           textAlign: 'center',
@@ -30,7 +37,8 @@ class App extends Component {
       ],
       step: 0,
     };
-     this.handleClickStart = this.handleClickStart.bind(this);
+
+    this.handleClickStart = this.handleClickStart.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
     this.handleJoyrideCallback = this.handleJoyrideCallback.bind(this);
   }
@@ -110,7 +118,6 @@ static defaultProps = {
   }
 
   render() {
-
 
     const { joyride } = this.props;
     const joyrideProps = {
